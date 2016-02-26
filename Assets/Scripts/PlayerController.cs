@@ -150,9 +150,10 @@ public class PlayerController : MonoBehaviour {
         {
             Destroy(other.gameObject);
             TimeCount.pause = true;
+            Time.timeScale = 0;
             timeTextW.text = timeTextG.text;
             leveltext.text = "Level : " + MapGenerator.level.ToString();
-            winCanvas.gameObject.SetActive(true);
+            winCanvas.gameObject.SetActive(true);     
         }
     }
 }

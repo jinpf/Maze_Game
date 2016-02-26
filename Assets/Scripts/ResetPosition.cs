@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using MyGameMap;
+
+using MyGameMap; // for start point
+using GamePause; // for pause check
 
 public class ResetPosition : MonoBehaviour {
 
@@ -16,6 +18,9 @@ public class ResetPosition : MonoBehaviour {
 
     public void reset()
     {
-        player.transform.position = new Vector3(MapGenerator.startX, MapGenerator.startY, MapGenerator.startZ);
+        if (!Pause.isPaused)
+        {
+            player.transform.position = new Vector3(MapGenerator.startX, MapGenerator.startY, MapGenerator.startZ);
+        }
     }
 }

@@ -26,6 +26,7 @@ public class WinButtonEvent : MonoBehaviour {
         Map.SendMessage("RebuildWorld");
         TimeCount.timespend = 0;
         TimeCount.pause = false;
+        Time.timeScale = 1;
         this.gameObject.SetActive(false);
     }
 
