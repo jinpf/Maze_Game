@@ -85,8 +85,8 @@
     <Compile Include="Assets\Scripts\ResetPosition.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\TimeCount.cs" />
-    <Compile Include="Assets\Scripts\Titile_Map.cs" />
     <Compile Include="Assets\Scripts\WinButtonEvent.cs" />
+    <Compile Include="Assets\SkySystem\Scripts\SkyController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Game Menu\Fonts\OpenSans\License!.txt" />

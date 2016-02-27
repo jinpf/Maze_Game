@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+
 using MyGameTimeCount;
+using SkyControl;
 
 public class WinButtonEvent : MonoBehaviour {
 
@@ -24,6 +26,7 @@ public class WinButtonEvent : MonoBehaviour {
     {
 
         Map.SendMessage("RebuildWorld");
+        SkyController.changeSky();
         TimeCount.timespend = 0;
         TimeCount.pause = false;
         Time.timeScale = 1;
