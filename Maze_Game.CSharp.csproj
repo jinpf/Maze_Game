@@ -79,6 +79,7 @@
     <Compile Include="Assets\Game Menu\Scripts\StartOptions.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChangeCamera.cs" />
+    <Compile Include="Assets\Scripts\HelpButtonEvent.cs" />
     <Compile Include="Assets\Scripts\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\PauseButtonEvent.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
