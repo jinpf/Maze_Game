@@ -34,5 +34,5 @@ Android版本：2.3.1+
 
 ![](./pic/8.png)
 
-![](./pic/9.png)
+![](./pic/9.jpg)
 
