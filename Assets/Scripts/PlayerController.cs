@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using MyGameTimeCount; // for TimeCount class
 using MyGameMap;
+using AutoSet;
 
 public class PlayerController : MonoBehaviour {
 
@@ -44,17 +45,31 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once frame
 	void Update () {
+
         // rotate
         if (FirstViewCamera.isActiveAndEnabled)
         {
-            handleTouchSwipe();
+
+            if (AutoButtonEvent.isAuto)
+            {
+                m_camTransform.eulerAngles = m_transform.eulerAngles;
+            }
+            else
+            {
+                handleTouchSwipe();
 #if UNITY_EDITOR
-            handleMouseSwipe();
+                handleMouseSwipe();
 #endif
+            }
+
         }
 
         // move
-        handlePlayerMove();
+        if (!AutoButtonEvent.isAuto)
+        {
+            handlePlayerMove();
+        }
+        m_camTransform.position = m_transform.position;
     }
 
     // use Joystick to move player and camera
@@ -74,7 +89,6 @@ public class PlayerController : MonoBehaviour {
         ym -= gravity * Time.deltaTime;
 
         m_ch.Move(m_transform.TransformDirection(new Vector3(xm, ym, zm)));
-        m_camTransform.position = m_transform.position;
     }
 
     // rotate the player and first view camera
@@ -101,8 +115,8 @@ public class PlayerController : MonoBehaviour {
                     m_camRot.y += deltaX * Time.deltaTime * rotSpeed;
 
                     // keep in range
-                    if (m_camRot.x < -30)
-                        m_camRot.x = -30;
+                    if (m_camRot.x < -80)
+                        m_camRot.x = -80;
                     if (m_camRot.x > 30)
                         m_camRot.x = 30;
 
@@ -112,6 +126,8 @@ public class PlayerController : MonoBehaviour {
                     Vector3 camrot = m_camTransform.eulerAngles;
                     camrot.x = 0; camrot.z = 0; // keep 
                     m_transform.eulerAngles = camrot;
+                    
+                    
                 }
             }
             else if (touch.phase == TouchPhase.Ended && touch.position.x > Screen.width / 2)
@@ -130,8 +146,8 @@ public class PlayerController : MonoBehaviour {
         m_camRot.y += rh;
 
         // keep in range
-        if (m_camRot.x < -30)
-            m_camRot.x = -30;
+        if (m_camRot.x < -80)
+            m_camRot.x = -80;
         if (m_camRot.x > 30)
             m_camRot.x = 30;
 

@@ -24,7 +24,7 @@ public class HelpButtonEvent : MonoBehaviour {
                 helps[i].SetActive(false);
             }
 
-            Debug.Log("disable!");
+            // Debug.Log("disable!");
         }
         else
         {
@@ -33,7 +33,7 @@ public class HelpButtonEvent : MonoBehaviour {
             {
                 helps[i].SetActive(true);
             }
-            Debug.Log("enable!");
+            // Debug.Log("enable!");
         }
     }
 }

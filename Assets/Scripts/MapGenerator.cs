@@ -10,10 +10,11 @@ namespace MyGameMap
         public GameObject player;
         public GameObject treasurePfb;
         public GameObject wallPfb;
-        public GameObject groundPfb;
-        public float unit = 1.5f;
+        // public GameObject groundPfb;
+        public float unit = 5f;
 
         public static float startX = 0, startY = 0, startZ = 0;
+        public static float endX = 0, endY = 0, endZ = 0;
  
         private LinkedList<GameObject> objs = new LinkedList<GameObject>();
         private int[,] map;
@@ -57,18 +58,16 @@ namespace MyGameMap
                 map = temp;
             } */
             
-            int size;
-            if (level < 16)
+            int size = 0;
+            if (level < 10)
             {
-                size = (level + 3) * 2 + 1;
-                unit = 1.5f;
+                size = (level + 2) * 2 + 1;
             }
             else
             {
-                size = (level - 11) * 2 + 1;
-                unit = 1f;
+                size = 25;
             }
-
+            
             map = new int[size, size];
             // init
             for (int i = 0; i < size; ++i)
@@ -138,9 +137,9 @@ namespace MyGameMap
             player.transform.position = new Vector3(0, -2f, 0);
 
             // init ground
-            GameObject Ground = Instantiate(groundPfb);
-            Ground.gameObject.transform.localScale = new Vector3(map.GetLength(1) * unit / 10, 1, map.GetLength(0) * unit / 10);
-            objs.AddLast(Ground); // mark for destory
+            // GameObject Ground = Instantiate(groundPfb);
+            // Ground.gameObject.transform.localScale = new Vector3(map.GetLength(1) * unit / 10, 1, map.GetLength(0) * unit / 10);
+            // objs.AddLast(Ground); // mark for destory
 
             // init map
             int im = map.GetLength(0) / 2, jm = map.GetLength(1) / 2;
@@ -157,28 +156,22 @@ namespace MyGameMap
                     else if (temp == 2)
                     {
                         // Player
-                        float x = (j - jm) * unit;
-                        float z = (im - i) * unit;
-                        startX = x; startY = 1.5f; startZ = z;
-                        player.transform.position = new Vector3(x, 2.5f, z);
-                        if (level < 16)
-                        {
-                            player.transform.localScale = new Vector3(1, 1, 1);
-                        }
-                        else
-                        {
-                            player.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                        }
-                        
+                        startX = (j - jm) * unit;
+                        startY = 1.2f * unit;
+                        startZ = (im - i) * unit;              
+                        player.transform.position = new Vector3(startX, startY, startZ);
+                        player.transform.localScale = new Vector3(0.6f*unit, 0.6f*unit, 0.6f*unit);                      
                     }
                     else if (temp == 3)
                     {
                         // treasure
-                        float x = (j - jm) * unit;
-                        float z = (im - i) * unit;
+                        endX = (j - jm) * unit;
+                        endY = 0.3f * unit;
+                        endZ = (im - i) * unit;
                         // this will be destoryed by player
                         GameObject Treasure = Instantiate(treasurePfb);
-                        Treasure.transform.position = new Vector3(x, 0.5f, z);
+                        Treasure.transform.position = new Vector3(endX, endY, endZ);
+                        Treasure.transform.localScale = new Vector3(0.3f * unit, 0.3f * unit, 0.3f * unit);
                     }
                     
                 }
@@ -209,32 +202,9 @@ namespace MyGameMap
             float z = (im - i) * unit;
             GameObject Wall = Instantiate(wallPfb);
             objs.AddLast(Wall); // mark for destory
-            Wall.gameObject.transform.position = new Vector3(x, 0.5f, z);
-            if (level < 16)
-            {
-                // lose type
-                Wall.gameObject.transform.localScale = new Vector3(0.5f, 1f, 0.5f);
-                // joint wall
-                if (i > 0 && map[i - 1, j] == 1)
-                {
-                    GameObject JointWall = Instantiate(wallPfb);
-                    objs.AddLast(JointWall); // mark for destory
-                    JointWall.gameObject.transform.position = new Vector3(x, 0.5f, z + unit / 2);
-                    JointWall.gameObject.transform.localScale = new Vector3(0.5f, 1f, unit - 0.5f);
-                }
-                if (j > 0 && map[i, j - 1] == 1)
-                {
-                    GameObject JointWall = Instantiate(wallPfb);
-                    objs.AddLast(JointWall); // mark for destory
-                    JointWall.gameObject.transform.position = new Vector3(x - unit / 2, 0.5f, z);
-                    JointWall.gameObject.transform.localScale = new Vector3(unit - 0.5f, 1f, 0.5f);
-                }
-            }
-            else
-            {
-                // hard type
-                Wall.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-            }
+            Wall.gameObject.transform.position = new Vector3(x, 0.25f*unit, z);
+            Wall.gameObject.transform.localScale = new Vector3(1f*unit, 0.5f*unit, 1f*unit);
+            
 
         }
 

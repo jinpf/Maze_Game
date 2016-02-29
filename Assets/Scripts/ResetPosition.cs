@@ -3,6 +3,7 @@ using System.Collections;
 
 using MyGameMap; // for start point
 using GamePause; // for pause check
+using AutoSet;
 
 public class ResetPosition : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class ResetPosition : MonoBehaviour {
     {
         if (!Pause.isPaused)
         {
+            AutoButtonEvent.isAuto = false;
             player.transform.position = new Vector3(MapGenerator.startX, MapGenerator.startY, MapGenerator.startZ);
         }
     }

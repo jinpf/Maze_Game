@@ -4,6 +4,7 @@ using System.Collections;
 
 using MyGameTimeCount;
 using SkyControl;
+using AutoSet;
 
 public class WinButtonEvent : MonoBehaviour {
 
@@ -24,7 +25,7 @@ public class WinButtonEvent : MonoBehaviour {
 
 	public void handleContinueButton()
     {
-
+        AutoButtonEvent.isAuto = false;
         Map.SendMessage("RebuildWorld");
         SkyController.changeSky();
         TimeCount.timespend = 0;

@@ -77,6 +77,7 @@
     <Compile Include="Assets\Game Menu\Scripts\SetAudioLevels.cs" />
     <Compile Include="Assets\Game Menu\Scripts\ShowPanels.cs" />
     <Compile Include="Assets\Game Menu\Scripts\StartOptions.cs" />
+    <Compile Include="Assets\Scripts\AutoButtonEvent.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChangeCamera.cs" />
     <Compile Include="Assets\Scripts\HelpButtonEvent.cs" />

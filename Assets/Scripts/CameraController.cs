@@ -11,12 +11,12 @@ public class CameraController : MonoBehaviour {
 
         if (this.name.Equals("LittleMapCamera"))
         {
-            offset = new Vector3(0f, 10f, 0f);
+            offset = new Vector3(0f, 18f, 0f);
         }
             
         else if (this.name.Equals("ThirdViewCamera"))
         {
-            offset = new Vector3(0f, 4.5f, -5f);
+            offset = new Vector3(0f, 5.5f, -4.5f);
         }
             
         // Debug.Log(this.name + " offset : " + offset.ToString());
