@@ -4,7 +4,7 @@
 ## 下载地址
 
 * 工程下载：[https://github.com/jinpf/Maze_Game/archive/master.zip](https://github.com/jinpf/Maze_Game/archive/master.zip)
-* 安卓APK：[https://github.com/jinpf/Maze_Game/releases/tag/1.0](https://github.com/jinpf/Maze_Game/releases/tag/1.0)
+* 安卓APK：[https://github.com/jinpf/Maze_Game/releases](https://github.com/jinpf/Maze_Game/releases)
 
 ## 实现功能
 Unity版本：5.3.2
